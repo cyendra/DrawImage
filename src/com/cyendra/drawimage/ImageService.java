@@ -2,9 +2,12 @@ package com.cyendra.drawimage;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.cyendra.drawimage.image.ExImage;
 
 public class ImageService {
 
@@ -34,6 +37,11 @@ public class ImageService {
 	}
 
 	public static void setViewport(Object scroll, JFrame drawSpace, int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void repaint(Graphics g, ExImage bufferedImage) {
 		// TODO Auto-generated method stub
 		
 	}
