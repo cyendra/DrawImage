@@ -75,27 +75,18 @@ public class ImageFrame extends JFrame {
 	
 	// 颜色面板
 	JPanel colorPanel = createToolPanel();
-
+	
+	/**
+	 * 默认构造器
+	 */
 	public ImageFrame() {
 		super();
 		initialize();
 	}
-	
-	private JPanel createToolPanel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	private JColorChooser getColorChooser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private JPanel createDrawSpace() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * 初始化 ImageFrame
+	 */
 	public void initialize() {
 		this.setTitle("画图");
 		service.initDrawSpace(this);
@@ -129,33 +120,111 @@ public class ImageFrame extends JFrame {
 		this.add(colorPanel, BorderLayout.SOUTH);
 	}
 
+	
+	/**
+	 * 获取颜色选择器
+	 * @return JColorChooser
+	 */
+	private JColorChooser getColorChooser() {
+		if (colorChooser == null) {
+			colorChooser = new JColorChooser();
+		}
+		return colorChooser;
+	}
+
 	private void createMenuBar() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	private JPanel createToolPanel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private JPanel createDrawSpace() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * 获取画布
+	 * @return JPanel
+	 */
+	public JPanel getDrawSpace() {
+		return this.drawSpace;
+	}
+
+	/**
+	 * 设置图片
+	 * @param bufferedImage MyImage
+	 */
+	public void setBufferedImage(ExImage bufferedImage) {
+		this.bufferedImage = bufferedImage;
+	}
+
+	/**
+	 * 获取图片 
+	 * @return ExImage
+	 */
 	public ExImage getBufferedImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.bufferedImage;
 	}
-
-	public JFrame getDrawSpace() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setBufferedImage(ExImage img) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
+	/**
+	 * 获取JScroolPane
+	 * @return JScrollPane
+	 */
 	public Object getScroll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.scroll;
 	}
 
-	public Frame getCurrentColorPanel() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * 获取颜色显示面板
+	 * @return JPanel
+	 */
+	public JPanel getCurrentColorPanel() {
+		return this.currentColorPanel;
 	}
+	
+	/**
+	 * 获取工具栏
+	 * @return JPanel
+	 */
+	public JPanel getToolPanel() {
+		return this.toolPanel;
+	}
+	
+	/**
+	 * 设置工具
+	 * @param tool Tool
+	 */
+	public void setTool(Tool tool) {
+		this.tool = tool;
+	}
+	/**
+	 * 获取工具
+	 * @return Tool
+	 */
+	public Tool getTool() {
+		return this.tool;
+	}
+	
+	/**
+	 * 获取颜色面板
+	 * @return JPanel
+	 */
+	public JPanel getColorPanel() {
+		return this.colorPanel;
+	}
+	
+
+	/**
+	 * 获取screenSize
+	 * @return Dimension
+	 */
+	public Dimension getScreenSize() {
+		return this.screenSize;
+	}
+	
 }
