@@ -142,114 +142,81 @@ public class ImageFrame extends JFrame {
 		}
 		return colorChooser;
 	}
-
+	
+	/**
+	 * 创建菜单栏
+	 */
 	private void createMenuBar() {
-		// 创建一个JMenuBar放置菜单
 		JMenuBar menuBar = new JMenuBar();
-		// 菜单文字数组，与下面的menuItemArr一一对应
 		String[] menuArr = { "文件(F)", "查看(V)", "颜色(C)", "帮助(H)" };
-		// 菜单项文字数组
 		String[][] menuItemArr = { { "新建(N)", "打开(O)", "保存(S)", "-", "退出(X)" },
-				{ "工具箱(T)", "颜料盒(C)" }, { "编辑颜色" }, { "帮助主题", "关于" } };
-		// 遍历menuArr与menuItemArr去创建菜单
+								   { "工具箱(T)", "颜料盒(C)" }, 
+								   { "编辑颜色" }, { "帮助主题", "关于" } };
 		for (int i = 0; i < menuArr.length; i++) {
-			// 新建一个JMenu菜单
 			JMenu menu = new JMenu(menuArr[i]);
 			for (int j = 0; j < menuItemArr[i].length; j++) {
-				// 如果menuItemArr[i][j]等于"-"
 				if (menuItemArr[i][j].equals("-")) {
-					// 设置菜单分隔
 					menu.addSeparator();
-				} else {
-					// 新建一个JMenuItem菜单项
+				}
+				else {
 					JMenuItem menuItem = new JMenuItem(menuItemArr[i][j]);
 					menuItem.addActionListener(menuListener);
-					// 把菜单项加到JMenu菜单里面
 					menu.add(menuItem);
 				}
 			}
-			// 把菜单加到JMenuBar上
 			menuBar.add(menu);
 		}
-		// 设置JMenubar
 		this.setJMenuBar(menuBar);
 	}
 	
 
 	/**
 	 * 创建简单颜色选择板
-	 * 
 	 * @return JPanel
 	 */
 	public JPanel createColorPanel() {
-		// 新建一个JPanel
 		JPanel panel = new JPanel();
-		// 设置布局方式
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		// 新建一个JToolBar
 		JToolBar toolBar = new JToolBar("颜色");
-		// 设置为不可拖动
 		toolBar.setFloatable(false);
-		// 设置与边界的距离
 		toolBar.setMargin(new Insets(2, 2, 2, 2));
-		// 设置布局方式
 		toolBar.setLayout(new GridLayout(2, 6, 2, 2));
-		// Color类中的已有颜色
 		Color[] colorArr = { Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.LIGHT_GRAY,
-				Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW };
+							 Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW };
 		JButton[] panelArr = new JButton[colorArr.length];
-		// 正在使用的颜色
 		currentColorPanel = new JPanel();
 		currentColorPanel.setBackground(Color.BLACK);
 		currentColorPanel.setPreferredSize(new Dimension(20, 20));
-		// 创建这些颜色的button
 		for (int i = 0; i < panelArr.length; i++) {
-			// 创建JButton
-			panelArr[i] = new JButton(new ImageAction(colorArr[i],
-					currentColorPanel));
-			// 设置button的颜色
+			panelArr[i] = new JButton(new ImageAction(colorArr[i],currentColorPanel));
 			panelArr[i].setBackground(colorArr[i]);
-			// 把button加到toobar中
 			toolBar.add(panelArr[i]);
 		}
 		panel.add(currentColorPanel);
 		panel.add(toolBar);
-		// 返回
 		return panel;
 	}
 
-	
 	/**
 	 * 创建工具栏 
 	 * @return JPanel
 	 */
 	private JPanel createToolPanel() {
-		// 创建一个JPanel
 		JPanel panel = new JPanel();
-		// 创建一个标题为"工具"的工具栏
 		JToolBar toolBar = new JToolBar("工具");
-		// 设置为垂直排列
 		toolBar.setOrientation(toolBar.VERTICAL);
-		// 设置为可以拖动
 		toolBar.setFloatable(true);
-		// 设置与边界的距离
 		toolBar.setMargin(new Insets(2, 2, 2, 2));
-		// 设置布局方式
 		toolBar.setLayout(new GridLayout(5, 2, 2, 2));
-		// 工具数组
 		String[] toolarr = { Tool.PENCIL_TOOL, Tool.BRUSH_TOOL, Tool.COLORPICKED_TOOL,
-				Tool.ATOMIZER_TOOL, Tool.ERASER_TOOL, Tool.LINE_TOOL, Tool.POLYGON_TOOL, Tool.RECT_TOOL,
-				Tool.ROUND_TOOL, Tool.ROUNDRECT_TOOL };
+							 Tool.ATOMIZER_TOOL, Tool.ERASER_TOOL, Tool.LINE_TOOL, Tool.POLYGON_TOOL, 
+							 Tool.RECT_TOOL,Tool.ROUND_TOOL, Tool.ROUNDRECT_TOOL };
 		for (int i = 0; i < toolarr.length; i++) {
-			ImageAction action = new ImageAction(new ImageIcon("img/"
-					+ toolarr[i] + ".jpg"), toolarr[i], this);
-			// 以图标创建一个新的button
+			ImageAction action = new ImageAction(new ImageIcon("img/" + toolarr[i] + ".jpg"), toolarr[i], this);
 			JButton button = new JButton(action);
-			// 把button加到工具栏中
 			toolBar.add(button);
 		}
 		panel.add(toolBar);
-		// 返回
 		return panel;
 	}
 	
