@@ -85,7 +85,7 @@ public class ImageFrame extends JFrame {
 	JPanel toolPanel = createToolPanel();
 	
 	// 颜色面板
-	JPanel colorPanel = createToolPanel();
+	JPanel colorPanel = createColorPanel();
 	
 	/**
 	 * 默认构造器
@@ -129,6 +129,7 @@ public class ImageFrame extends JFrame {
 		this.add(scroll, BorderLayout.CENTER);
 		this.add(toolPanel, BorderLayout.WEST);
 		this.add(colorPanel, BorderLayout.SOUTH);
+		this.pack();
 	}
 
 	
@@ -136,7 +137,7 @@ public class ImageFrame extends JFrame {
 	 * 获取颜色选择器
 	 * @return JColorChooser
 	 */
-	private JColorChooser getColorChooser() {
+	public JColorChooser getColorChooser() {
 		if (colorChooser == null) {
 			colorChooser = new JColorChooser();
 		}
@@ -260,7 +261,7 @@ public class ImageFrame extends JFrame {
 	 * 获取JScroolPane
 	 * @return JScrollPane
 	 */
-	public Object getScroll() {
+	public JScrollPane getScroll() {
 		return this.scroll;
 	}
 
